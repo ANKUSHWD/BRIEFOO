@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRIEFOO | Instant AI Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--primary:#6366f1;--primary-dark:#4f46e5;--accent:#22c55e;--dark:#0f172a;--dark2:#1e293b;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(135deg,var(--dark),#1a1f3c)}
+.bg::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 80%,rgba(99,102,241,.2),transparent 50%),radial-gradient(circle at 80% 20%,rgba(34,197,94,.15),transparent 50%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(15,23,42,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,#818cf8,#22c55e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-weight:500;transition:.3s}
+.nav-links a:hover{color:#fff}
+.nav-btn{padding:10px 24px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;text-decoration:none;border-radius:25px;font-weight:600;font-size:.9rem;transition:.3s}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(99,102,241,.4)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 20px 80px;text-align:center}
+.hero h1{font-size:3.5rem;font-weight:800;margin-bottom:20px;line-height:1.2}
+.hero h1 span{background:linear-gradient(135deg,#818cf8,#22c55e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.2rem;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 35px}
+.hero-btns{display:flex;gap:15px;justify-content:center}
+.btn{padding:14px 32px;border-radius:30px;font-weight:600;text-decoration:none;transition:.3s;display:inline-flex;align-items:center;gap:8px}
+.btn1{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 4px 20px rgba(99,102,241,.4)}
+.btn1:hover{transform:translateY(-3px)}
+.btn2{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff}
+.btn2:hover{background:rgba(255,255,255,.15)}
+.stats{padding:50px 20px;background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.05)}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.stat-num{font-family:'Poppins',sans-serif;font-size:2.5rem;font-weight:700;color:#818cf8}
+.stat-lbl{color:rgba(255,255,255,.6);font-size:.9rem}
+.services{padding:80px 20px;max-width:1200px;margin:0 auto}
+.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:35px;transition:.4s}
+.card:hover{transform:translateY(-8px);background:rgba(255,255,255,.05);border-color:rgba(99,102,241,.3)}
+.serv-icon{width:60px;height:60px;background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.3));border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#818cf8;margin-bottom:20px}
+.card h3{font-size:1.3rem;margin-bottom:12px}
+.card p{color:rgba(255,255,255,.6);font-size:.95rem;margin-bottom:15px}
+.card .price{font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:700;color:#22c55e}
+.how{padding:80px 20px;background:rgba(255,255,255,.02)}
+.steps{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.steps::before{content:'';position:absolute;top:40px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));opacity:.3}
+.step{text-align:center;position:relative}
+.step-num{width:70px;height:70px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:700;margin:0 auto 20px;box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.step h3{font-size:1.2rem;margin-bottom:10px}
+.step p{color:rgba(255,255,255,.6);font-size:.95rem}
+.testimonials{padding:80px 20px;max-width:1200px;margin:0 auto}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
+.test-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:30px}
+.test-card .quote{font-size:4rem;color:rgba(99,102,241,.1);font-family:serif;line-height:.5}
+.test-card p{color:rgba(255,255,255,.8);font-style:italic;margin:15px 0}
+.rating{color:#fbbf24}
+.author{display:flex;align-items:center;gap:12px}
+.avatar{width:45px;height:45px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600}
+.author h4{font-size:1rem}
+.author span{color:rgba(255,255,255,.5);font-size:.85rem}
+.faq{padding:80px 20px;max-width:800px;margin:0 auto}
+.faq-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:15px;overflow:hidden}
+.faq-q{padding:20px 25px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600}
+.faq-q i{color:#818cf8;transition:.3s}
+.faq-item.active .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:.3s}
+.faq-a-content{padding:0 25px 20px;color:rgba(255,255,255,.7)}
+.faq-item.active .faq-a{max-height:200px}
+.order{padding:80px 20px;background:rgba(255,255,255,.02)}
+.order form{max-width:600px;margin:0 auto}
+.order .card{padding:40px}
+.order input,.order select,.order textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:1rem;margin-bottom:20px;transition:.3s}
+.order input:focus,.order select:focus,.order textarea:focus{outline:none;border-color:var(--primary);background:rgba(255,255,255,.08)}
+.order select option{background:var(--dark2)}
+.order textarea{min-height:130px;resize:vertical}
+.order button{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;border-radius:10px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:.3s}
+.order button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.terms{padding:50px 20px;max-width:800px;margin:0 auto}
+.terms h2{text-align:center;margin-bottom:25px}
+.terms p{color:rgba(255,255,255,.7);margin-bottom:15px}
+.terms strong{color:#fff}
+footer{padding:50px 20px 25px;background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.05)}
+.footer{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+footer .logo{margin-bottom:15px;display:inline-block}
+footer p{color:rgba(255,255,255,.6);font-size:.95rem;margin-bottom:20px}
+.social{display:flex;gap:12px}
+.social a{width:40px;height:40px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:.3s}
+.social a:hover{background:var(--primary);transform:translateY(-3px)}
+footer h4{font-size:1.1rem;margin-bottom:20px}
+footer ul{list-style:none}
+footer li{margin-bottom:10px}
+footer a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:.3s}
+footer a:hover{color:#818cf8}
+.footer-bt{max-width:1200px;margin:40px auto 0;padding-top:25px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;color:rgba(255,255,255,.5);font-size:.9rem}
+.footer-bt a{color:rgba(255,255,255,.5);text-decoration:none;margin-left:20px}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.steps::before{display:none}.footer{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){nav{padding:15px 20px}.nav-links{display:none}.hero h1{font-size:2.2rem}.hero-btns{flex-direction:column;align-items:center}.stats-grid{grid-template-columns:1fr 1fr}.footer{grid-template-columns:1fr}.footer-bt{flex-direction:column;gap:15px;text-align:center}.footer-bt a{margin:0 10px}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav><div class="logo">BRIEFOO</div><ul class="nav-links"><li><a href="#services">Services</a></li><li><a href="#how">How It Works</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#faq">FAQ</a></li><li><a href="#order">Order</a></li></ul><a href="#order" class="nav-btn">Get Started</a></nav>
+<section class="hero"><div><h1>Instant AI-Assisted <span>Digital Solutions</span></h1><p>Professional resumes, presentations, content & captions — crafted by AI with expert human review. Get results in just 30 minutes.</p><div class="hero-btns"><a href="#order" class="btn btn1"><i class="fas fa-rocket"></i> Start Project</a><a href="#services" class="btn btn2"><i class="fas fa-arrow-down"></i> Explore</a></div></div></section>
+<section class="stats"><div class="stats-grid"><div><div class="stat-num">10K+</div><div class="stat-lbl">Happy Customers</div></div><div><div class="stat-num">30min</div><div class="stat-lbl">Average Delivery</div></div><div><div class="stat-num">98%</div><div class="stat-lbl">Satisfaction</div></div><div><div class="stat-num">4.9</div><div class="stat-lbl">Average Rating</div></div></div></section>
+<section class="services" id="services"><div class="serv-grid"><div class="card"><div class="serv-icon"><i class="fas fa-file-alt"></i></div><h3>Resume / CV Writing</h3><p>ATS-friendly professional resumes with AI + human review.</p><div class="price">$15 – $25</div></div><div class="card"><div class="serv-icon"><i class="fas fa-chalkboard-teacher"></i></div><h3>Presentations</h3><p>Clean, professional slides for business & education.</p><div class="price">$20 – $49</div></div><div class="card"><div class="serv-icon"><i class="fas fa-pen-fancy"></i></div><h3>Content & Captions</h3><p>Creative content for your Reels, Bio & Posts.</p><div class="price">$5 – $14</div></div><div class="card"><div class="serv-icon"><i class="fas fa-envelope-open-text"></i></div><h3>Cover Letter</h3><p>Customized cover letters for job applications.</p><div class="price">$10 – $15</div></div></div></section>
+<section class="how" id="how"><div class="steps"><div class="step"><div class="step-num">1</div><h3>Submit Details</h3><p>Fill form with your requirements.</p></div><div class="step"><div class="step-num">2</div><h3>We Create</h3><p>AI generates + expert team reviews.</p></div><div class="step"><div class="step-num">3</div><h3>Fast Delivery</h3><p>Get content within 30 minutes.</p></div></div></section>
+<section class="testimonials" id="testimonials"><div class="test-grid"><div class="test-card"><div class="quote">"</div><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"Got my resume rewritten professionally. Within a week, I landed 3 interviews!"</p><div class="author"><div class="avatar">RS</div><div><h4>Rahul Sharma</h4><span>Software Engineer</span></div></div></div><div class="test-card"><div class="quote">"</div><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"The presentation for my startup pitch was stunning. Helped impress investors!"</p><div class="author"><div class="avatar">PM</div><div><h4>Priya Mehta</h4><span>Startup Founder</span></div></div></div><div class="test-card"><div class="quote">"</div><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p>"Amazing captions for Instagram! Grew my engagement significantly."</p><div class="author"><div class="avatar">AK</div><div><h4>Ankit Kumar</h4><span>Content Creator</span></div></div></div></div></section>
+<section class="faq" id="faq"><div class="faq-item"><div class="faq-q">How fast is delivery?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><div class="faq-a-content">We deliver within 30 minutes of order confirmation and payment.</div></div></div><div class="faq-item"><div class="faq-q">What payment methods?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><div class="faq-a-content">We accept Credit/Debit cards, UPI, PayPal, and bank transfers.</div></div></div><div class="faq-item"><div class="faq-q">Can I get a refund?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><div class="faq-a-content">Due to digital nature, refunds not provided once delivered. Contact within 24 hours for issues.</div></div></div><div class="faq-item"><div class="faq-q">Do you offer revisions?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><div class="faq-a-content">Yes! Up to 2 rounds of revisions for resumes and cover letters.</div></div></div></section>
+<section class="order" id="order"><div class="card"><form><input type="text" placeholder="Your Name" required><input type="email" placeholder="Your Email" required><select required><option value="">Select Service</option><option>Resume / CV Writing</option><option>Presentations</option><option>Content / Caption</option><option>Cover Letter</option></select><textarea placeholder="Your requirements..."></textarea><button type="submit"><i class="fas fa-lock"></i> Proceed to Payment</button></form></div></section>
+<section class="terms"><h2>Terms & Conditions</h2><p>We provide AI-assisted digital services. Delivery within <strong>30 minutes</strong> after payment.</p><p>Refunds not provided once delivered. Contact within <strong>24 hours</strong> for issues.</p></section>
+<footer><div class="footer"><div><div class="logo">BRIEFOO</div><p>Professional AI-assisted digital solutions delivered in minutes.</p><div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-facebook"></i></a></div></div><div><h4>Services</h4><ul><li><a href="#">Resume Writing</a></li><li><a href="#">Presentations</a></li><li><a href="#">Content Writing</a></li><li><a href="#">Cover Letters</a></li></ul></div><div><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">How It Works</a></li><li><a href="#">Pricing</a></li><li><a href="#">Contact</a></li></ul></div><div><h4>Support</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li><li><a href="#">Refund</a></li></ul></div></div><div class="footer-bt"><p>&copy; 2024 Briefoo. All rights reserved.</p><div><a href="#">Privacy</a><a href="#">Terms</a></div></div></footer>
+<script>
+document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q').addEventListener('click',()=>{item.classList.toggle('active')})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})});
+document.querySelector('form').addEventListener('submit',e=>{e.preventDefault();const form=e.target;const name=form.querySelector('input[type="text"]').value;const email=form.querySelector('input[type="email"]').value;const service=form.querySelector('select').value;const requirements=form.querySelector('textarea').value;const serviceNames={'Resume / CV Writing':'Resume / CV Writing','Presentations':'Presentations','Content / Caption':'Content / Caption Writing','Cover Letter':'Cover Letter'};const prices={'Resume / CV Writing':'15','Presentations':'25','Content / Caption':'5','Cover Letter':'10'};const serviceName=serviceNames[service]||service;const amount=prices[serviceName]||'15';window.location.href=`payment.html?orderId=ORD${Date.now()}&service=${encodeURIComponent(serviceName)}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&amount=${amount}`});
+</script>
+</body>
+</html>

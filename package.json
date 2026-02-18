@@ -1,0 +1,18 @@
+{
+  "name": "briefoo-server",
+  "version": "1.0.0",
+  "description": "Briefoo - AI Assisted Digital Services Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "razorpay": "^2.9.2",
+    "nodemailer": "^6.9.7",
+    "body-parser": "^1.20.2"
+  }
+}

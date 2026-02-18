@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment - Briefoo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--primary:#6366f1;--primary-dark:#4f46e5;--accent:#22c55e;--dark:#0f172a;--dark2:#1e293b;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(135deg,var(--dark),#1a1f3c)}
+.bg::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 80%,rgba(99,102,241,.2),transparent 50%),radial-gradient(circle at 80% 20%,rgba(34,197,94,.15),transparent 50%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(15,23,42,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,#818cf8,#22c55e);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-weight:500;transition:.3s}
+.nav-links a:hover{color:#fff}
+.back-btn{padding:10px 24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;text-decoration:none;border-radius:25px;font-weight:600;font-size:.9rem;transition:.3s}
+.back-btn:hover{background:rgba(255,255,255,.2)}
+.main{min-height:100vh;padding:120px 20px 60px;display:flex;justify-content:center}
+.payment-container{max-width:600px;width:100%}
+.payment-header{text-align:center;margin-bottom:40px}
+.payment-header h1{font-size:2.5rem;margin-bottom:10px}
+.payment-header p{color:rgba(255,255,255,.7)}
+.order-summary{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:30px;margin-bottom:25px}
+.order-summary h3{margin-bottom:20px;color:#818cf8}
+.order-details{display:grid;gap:15px}
+.order-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.order-row:last-child{border-bottom:none}
+.order-row .label{color:rgba(255,255,255,.7)}
+.order-row .value{font-weight:600}
+.order-row.total .value{color:#22c55e;font-size:1.4rem}
+.payment-methods{margin-bottom:25px}
+.payment-methods h3{margin-bottom:20px}
+.method{background:rgba(255,255,255,.03);border:2px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;margin-bottom:15px;cursor:pointer;transition:.3s}
+.method:hover,.method.selected{border-color:var(--primary);background:rgba(99,102,241,.1)}
+.method-header{display:flex;align-items:center;gap:15px}
+.method-icon{width:50px;height:50px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.method-info h4{font-size:1.1rem;margin-bottom:5px}
+.method-info p{color:rgba(255,255,255,.6);font-size:.9rem}
+.payment-details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:30px;margin-bottom:25px}
+.payment-details h3{margin-bottom:20px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;margin-bottom:8px;font-weight:500}
+.form-group input{width:100%;padding:14px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:1rem;transition:.3s}
+.form-group input:focus{outline:none;border-color:var(--primary);background:rgba(255,255,255,.08)}
+.form-group input::placeholder{color:rgba(255,255,255,.4)}
+.upi-apps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:15px}
+.upi-app{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:15px;text-align:center;cursor:pointer;transition:.3s}
+.upi-app:hover,.upi-app.selected{background:rgba(99,102,241,.2);border-color:var(--primary)}
+.upi-app i{font-size:2rem;margin-bottom:8px}
+.upi-app span{display:block;font-size:.85rem}
+.pay-btn{width:100%;padding:18px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;border-radius:12px;font-size:1.2rem;font-weight:600;cursor:pointer;transition:.3s}
+.pay-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99,102,241,.4)}
+.pay-btn:disabled{opacity:.6;cursor:not-allowed}
+.security-note{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;color:rgba(255,255,255,.6);font-size:.9rem}
+.security-note i{color:#22c55e}
+.success-message{text-align:center;padding:60px 20px}
+.success-icon{font-size:5rem;color:#22c55e;margin-bottom:20px}
+.success-message h1{font-size:2.5rem;margin-bottom:15px}
+.success-message p{color:rgba(255,255,255,.7);margin-bottom:30px}
+.order-id-box{background:rgba(255,255,255,.05);border-radius:12px;padding:20px;margin-bottom:30px}
+.order-id-box p{color:rgba(255,255,255,.7);margin-bottom:5px}
+.order-id-box .order-id{font-family:monospace;font-size:1.3rem;color:#818cf8}
+@media(max-width:600px){.upi-apps{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav><div class="logo">BRIEFOO</div><a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a></nav>
+<div class="main">
+<div class="payment-container" id="paymentContainer">
+<div class="payment-header">
+<h1>Complete Payment</h1>
+<p>Your order is ready. Choose your payment method below.</p>
+</div>
+<div class="order-summary">
+<h3><i class="fas fa-receipt"></i> Order Summary</h3>
+<div class="order-details">
+<div class="order-row"><span class="label">Order ID</span><span class="value" id="orderId">-</span></div>
+<div class="order-row"><span class="label">Service</span><span class="value" id="serviceName">-</span></div>
+<div class="order-row"><span class="label">Customer</span><span class="value" id="customerName">-</span></div>
+<div class="order-row"><span class="label">Email</span><span class="value" id="customerEmail">-</span></div>
+<div class="order-row total"><span class="label">Total Amount</span><span class="value" id="totalAmount">-</span></div>
+</div>
+</div>
+<div class="payment-methods">
+<h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+<div class="method selected" data-method="upi" onclick="selectMethod(this)">
+<div class="method-header">
+<div class="method-icon"><i class="fas fa-mobile-alt"></i></div>
+<div class="method-info"><h4>UPI Payment</h4><p>Pay using GPay, PhonePe, Paytm, etc.</p></div>
+</div>
+</div>
+<div class="method" data-method="card" onclick="selectMethod(this)">
+<div class="method-header">
+<div class="method-icon"><i class="fas fa-credit-card"></i></div>
+<div class="method-info"><h4>Card Payment</h4><p>Credit/Debit card payment</p></div>
+</div>
+</div>
+<div class="method" data-method="bank" onclick="selectMethod(this)">
+<div class="method-header">
+<div class="method-icon"><i class="fas fa-university"></i></div>
+<div class="method-info"><h4>Bank Transfer</h4><p>Direct bank transfer</p></div>
+</div>
+</div>
+</div>
+<div class="payment-details" id="paymentDetails">
+<h3><i class="fas fa-mobile-alt"></i> Pay via UPI</h3>
+<p style="color:rgba(255,255,255,.7);margin-bottom:20px;">Scan QR code or pay to UPI ID below</p>
+<div style="text-align:center;margin-bottom:25px;">
+<div style="background:#fff;padding:20px;border-radius:15px;display:inline-block;">
+<div style="width:150px;height:150px;background:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-qrcode" style="font-size:4rem;color:#000;"></i></div>
+<p style="color:#333;margin-top:15px;font-weight:600;">Scan to Pay</p>
+</div>
+</div>
+<div class="form-group">
+<label>Or enter UPI ID</label>
+<input type="text" placeholder="yourname@upi" id="upiId">
+</div>
+<p style="color:rgba(255,255,255,.7);margin-bottom:15px;"><strong>UPI ID:</strong> <span style="color:#818cf8;">briefoo@upi</span></p>
+</div>
+<button class="pay-btn" onclick="processPayment()"><i class="fas fa-lock"></i> Pay $<span id="payAmount">0</span></button>
+<div class="security-note"><i class="fas fa-shield-alt"></i> Your payment is secure and encrypted</div>
+</div>
+<div class="success-message" id="successMessage" style="display:none;">
+<div class="success-icon"><i class="fas fa-check-circle"></i></div>
+<h1>Payment Successful!</h1>
+<p>Thank you for your payment. We'll start working on your order immediately.</p>
+<div class="order-id-box">
+<p>Order ID</p>
+<div class="order-id" id="successOrderId">-</div>
+</div>
+<p style="margin-bottom:15px;">A confirmation email has been sent to <span id="successEmail">-</span></p>
+<p>We'll deliver your order within 30 minutes!</p>
+<a href="index.html" class="back-btn" style="display:inline-block;margin-top:30px;">Back to Home</a>
+</div>
+</div>
+</div>
+<script>
+// Get URL parameters
+const urlParams=new URLSearchParams(window.location.search);
+const orderId=urlParams.get('orderId')||'ORD'+Date.now();
+const service=urlParams.get('service')||'Resume / CV Writing';
+const name=decodeURIComponent(urlParams.get('name')||'Customer');
+const email=decodeURIComponent(urlParams.get('email')||'customer@email.com');
+const amount=urlParams.get('amount')||'15';
+
+// Set order details
+document.getElementById('orderId').textContent=orderId;
+document.getElementById('serviceName').textContent=service;
+document.getElementById('customerName').textContent=name;
+document.getElementById('customerEmail').textContent=email;
+document.getElementById('totalAmount').textContent='$'+amount;
+document.getElementById('payAmount').textContent=amount;
+
+let selectedMethod='upi';
+
+function selectMethod(el){
+document.querySelectorAll('.method').forEach(m=>m.classList.remove('selected'));
+el.classList.add('selected');
+selectedMethod=el.dataset.method;
+const details=document.getElementById('paymentDetails');
+if(selectedMethod==='upi'){
+details.innerHTML='<h3><i class="fas fa-mobile-alt"></i> Pay via UPI</h3><p style="color:rgba(255,255,255,.7);margin-bottom:20px;">Scan QR code or pay to UPI ID below</p><div style="text-align:center;margin-bottom:25px;"><div style="background:#fff;padding:20px;border-radius:15px;display:inline-block;"><div style="width:150px;height:150px;background:#000;border-radius:10px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-qrcode" style="font-size:4rem;color:#000;"></i></div><p style="color:#333;margin-top:15px;font-weight:600;">Scan to Pay</p></div></div><div class="form-group"><label>Or enter UPI ID</label><input type="text" placeholder="yourname@upi" id="upiId"></div><p style="color:rgba(255,255,255,.7);margin-bottom:15px;"><strong>UPI ID:</strong> <span style="color:#818cf8;">briefoo@upi</span></p>';
+}else if(selectedMethod==='card'){
+details.innerHTML='<h3><i class="fas fa-credit-card"></i> Card Payment</h3><div class="form-group"><label>Card Number</label><input type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;"><div class="form-group"><label>Expiry Date</label><input type="text" placeholder="MM/YY" maxlength="5"></div><div class="form-group"><label>CVV</label><input type="text" placeholder="123" maxlength="3"></div></div><div class="form-group"><label>Name on Card</label><input type="text" placeholder="John Doe"></div>';
+}else if(selectedMethod==='bank'){
+details.innerHTML='<h3><i class="fas fa-university"></i> Bank Transfer</h3><p style="color:rgba(255,255,255,.7);margin-bottom:20px;">Transfer to the account below</p><div style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:20px;"><p style="margin-bottom:10px;"><strong>Bank:</strong> Your Bank Name</p><p style="margin-bottom:10px;"><strong>Account:</strong> XXXXXXXXXX</p><p style="margin-bottom:10px;"><strong>IFSC:</strong> XXXXX000XXXX</p><p><strong>UPI:</strong> briefoo@upi</p></div>';
+}
+}
+
+async function processPayment(){
+const btn=document.querySelector('.pay-btn');
+btn.disabled=true;
+btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+// Simulate payment processing
+await new Promise(r=>setTimeout(r,2000));
+
+// Show success
+document.getElementById('paymentContainer').style.display='none';
+document.getElementById('successMessage').style.display='block';
+document.getElementById('successOrderId').textContent=orderId;
+document.getElementById('successEmail').textContent=email;
+}
+</script>
+</body>
+</html>
