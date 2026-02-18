@@ -76,16 +76,26 @@ Payment Gateway Integration
 REST APIs
 
 📂 Project Structure
+```
 briefoo/
 │
 ├── frontend/        # Web frontend
+│
 ├── backend/         # Express.js backend and APIs
+│
 ├── routes/          # API routes
+│
 ├── controllers/     # Business logic
+│
 ├── models/          # Database models
-├── public/
-├── LICENSE/
-└── README.md
+│
+├── public/          # Static files
+│
+├── LICENSE          # MIT License
+│
+└── README.md        # Project documentation
+
+```
 
 ⚙️ Installation & Setup
 1. Clone the repository
