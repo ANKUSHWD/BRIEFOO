@@ -7,7 +7,7 @@ The platform automates content generation using AI while integrating secure paym
 
 Features:-
 
- AI-Powered Content Generation
+``` AI-Powered Content Generation:```
 
 Resume writing
 
@@ -17,7 +17,7 @@ Presentation content generation
 
 Social media captions and professional content
 
- Instant Digital Solutions
+ ```Instant Digital Solutions:```
 
 Fast response time
 
@@ -25,7 +25,7 @@ Automated workflows
 
 Real-time content generation
 
- Modern Web Interface
+``` Modern Web Interface:```
 
 Responsive and user-friendly frontend
 
@@ -33,7 +33,7 @@ Clean and intuitive UI/UX
 
 Cross-device compatibility
 
- Secure Backend System
+``` Secure Backend System:```
 
 Node.js powered backend
 
@@ -41,13 +41,13 @@ Secure API architecture
 
 User request handling and processing
 
- Payment Integration
+``` Payment Integration:```
 
 Secure payment processing
 
 Service-based access model
 
- Scalable Architecture
+``` Scalable Architecture:-```
 
 Modular code structure
 
@@ -57,13 +57,13 @@ Ready for production deployment
 
  Tech Stack
 
-Frontend
+```Frontend:```
 
 HTML, CSS, JavaScript
 
 Modern UI Framework (React / Next.js if used)
 
-Backend
+```Backend:```
 
 Express.js
 
@@ -110,35 +110,35 @@ cd backend
 npm install
 
 
-Frontend:
+```Frontend:```
 
 cd frontend
 npm install
 
 3. Run the project
 
-Backend:
+```Backend:```
 
 npm start
 
 
-Frontend:
+```Frontend:```
 
 npm run dev
 
- Use Cases
+ ```Use Cases:-```
 
-.Students creating resumes and cover letters
+- Students creating resumes and cover letters
 
-.Professionals preparing presentations
+- Professionals preparing presentations
 
-.Freelancers generating client content
+- Freelancers generating client content
 
-.Social media creators writing captions
+- Social media creators writing captions
 
-.Job seekers needing instant professional documents
+- Job seekers needing instant professional documents
 
- Future Improvements
+ ```Future Improvements:-```
 
 User authentication system
 
@@ -155,6 +155,6 @@ Admin panel
 Contributions are welcome!
 Feel free to fork this repository and submit a pull request.
 
- License
+``` License:```
 
 This project is licensed under the MIT License.
